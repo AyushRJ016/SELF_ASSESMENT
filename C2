@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+
+
+using namespace std;
+
+
+
+
+
+
+int main()
+
+{
+	#ifndef ONLINE_JUDGE
+	   freopen("input1.txt", "r", stdin);
+	   freopen("output1.txt", "w", stdout);
+	   #endif
+
+int t;
+cin>>t;
+while(t--)
+{
+  int n,m1=-1,m2=-1,m3=-1,m4=-1;
+cin>>n;
+int a[n],b[n];
+for(int i=0;i<n;i++)
+{
+cin>>a[i];
+m1=max(m1,a[i]);
+}
+for(int i=0;i<n;i++)
+{
+cin>>b[i];
+m2=max(m2,b[i]);
+}
+pair<int,int>c[n];
+if(m1>=m2)
+{
+for(int i=0;i<n;i++)
+{
+  c[i].first=a[i];
+  c[i].second=b[i];
+}	
+}
+if(m1<m2)
+{
+for(int i=0;i<n;i++)
+{
+  c[i].first=b[i];
+  c[i].second=a[i];
+}	
+}
+
+sort(c,c+n);
+
+for(int i=0;i<n-1;i++)
+{
+	if(c[i].first<c[i].second && c[i].first<=c[n-1].second)
+		{ c[i].second=c[i].first;
+		}
+}
+for(int i=0;i<n;i++)
+{
+
+m4=max(m4,c[i].second);
+}
+
+cout<<c[n-1].first*m4<<endl;
+;
+}
+
+}
